@@ -3,8 +3,7 @@ import react from "@vitejs/plugin-react";
 
 const repoName = "resume";
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   plugins: [react()],
-  base: process.env.NODE_ENV === "production" ? `/${repoName}/` : "/"
-});
-
+  base: command === "build" ? `/${repoName}/` : "/"
+}));
